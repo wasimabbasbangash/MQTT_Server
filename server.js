@@ -8,30 +8,40 @@ app.set("view engine", "ejs"); // Use ejs instead of html
 app.set("views", "./views"); // view folder contain .ejs files
 
 // variable declaration
-var librarySensorOne = {};
+var librarySensorOne = {
+  "humidity": 53.98102,
+  "temperature": 23.12009,
+  "isAvailable": 1,
+  "co2": 895.259,
+  "isFake": true,
+};
 var librarySensorTwo = {
   "humidity": 53.98102,
   "temperature": 23.12009,
   "isAvailable": 0,
   "co2": 3387.259,
+  "isFake": true,
 };
 var librarySensorThree = {
   "humidity": 53.98102,
   "temperature": 23.12009,
   "isAvailable": 1,
   "co2": 3387.259,
+  "isFake": true,
 };
 var librarySensorFour = {
   "humidity": 53.98102,
   "temperature": 23.12009,
   "isAvailable": 0,
   "co2": 3387.259,
+  "isFake": true,
 };
 var librarySensorFive = {
   "humidity": 53.98102,
   "temperature": 23.12009,
   "isAvailable": 0,
   "co2": 3387.259,
+  "isFake": true,
 };
 
 // Parse URL-encoded bodies (as sent by HTML forms)
@@ -110,6 +120,7 @@ client.on("message", function (topic, message) {
       librarySensorOne = JSON.parse(globalMQTT);
     }
   } else if (topic[3] === "unikoblenz-pynode-1000") {
+    //second study room sensor's id goes here
     var getDataFromTTN = JSON.parse(message);
     if (getDataFromTTN.uplink_message.frm_payload !== undefined) {
       var getFrmPayload = getDataFromTTN.uplink_message.frm_payload;
@@ -118,6 +129,7 @@ client.on("message", function (topic, message) {
       librarySensorTwo = globalMQTT;
     }
   } else if (topic[3] === "unikoblenz-pynode-1000") {
+    //third study room sensor's id goes here
     var getDataFromTTN = JSON.parse(message);
     if (getDataFromTTN.uplink_message.frm_payload !== undefined) {
       var getFrmPayload = getDataFromTTN.uplink_message.frm_payload;
@@ -126,6 +138,7 @@ client.on("message", function (topic, message) {
       librarySensorThree = globalMQTT;
     }
   } else if (topic[3] === "unikoblenz-pynode-1000") {
+    //fourth study room sensor's id goes here
     var getDataFromTTN = JSON.parse(message);
     if (getDataFromTTN.uplink_message.frm_payload !== undefined) {
       var getFrmPayload = getDataFromTTN.uplink_message.frm_payload;
@@ -134,6 +147,7 @@ client.on("message", function (topic, message) {
       librarySensorFour = globalMQTT;
     }
   } else if (topic[3] === "unikoblenz-pynode-1000") {
+    //fifth study room sensor's id goes here
     var getDataFromTTN = JSON.parse(message);
     if (getDataFromTTN.uplink_message.frm_payload !== undefined) {
       var getFrmPayload = getDataFromTTN.uplink_message.frm_payload;
